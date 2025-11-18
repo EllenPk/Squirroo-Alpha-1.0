@@ -1,0 +1,34 @@
+/* Quitamos el estado presionado de los botones */
+.btn:focus,
+.btn:active,
+.btn:focus-visible {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+/* Animación suave y elegante */
+.squirroo-btn {
+  transition: all 0.25s ease;
+  border: 1px solid #0a3d15 !important;
+  color: #0a3d15 !important;
+  background-color: white !important;
+}
+
+/* Efecto al pasar el mouse */
+.squirroo-btn:hover {
+  transform: scale(1.06);
+  background-color: #0b4e19 !important;
+  color: white !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+
+/* Para que el dropdown combine con el estilo */
+.dropdown-menu {
+  border-radius: 12px;
+  padding: 8px 0;
+}
+
+.dropdown-item:hover {
+  background-color: #eaf7ed;
+  color: #0a3d15;
+}
