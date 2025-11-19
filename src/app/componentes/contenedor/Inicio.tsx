@@ -2,9 +2,9 @@ import { useState } from "react";
 import logoD1 from "../../../assets/img/d1.png";
 import logoOlimpica from "../../../assets/img/olimpica.png";
 import logoExito from "../../../assets/img/exito.png";
-import logoCarulla from "../../../assets/img/Carulla.png";
+import logoCarulla from "../../../assets/img/carulla.png";
 import logoIsimo from "../../../assets/img/isimo.png";
-import logoAra from "../../../assets/img/Ara.png";
+import logoAra from "../../../assets/img/ara.png";
 
 // Importar imágenes de productos
 import arrozDiana from "../../../assets/img/Arroz diana.png";
