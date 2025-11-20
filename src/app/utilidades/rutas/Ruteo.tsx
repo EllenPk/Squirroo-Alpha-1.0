@@ -5,6 +5,7 @@ import { MenuCrear } from "../../componentes/Menu/MenuCrear";
 import { MenuAdmin } from "../../componentes/Menu/MenuAdmin";
 import { Inicio } from "../../componentes/contenedor/Inicio";
 import { MenuActualizar } from "../../componentes/Menu/MenuActualizar";
+import { InicioSesion } from "../../componentes/Otros/InicioSesion";
 
 
 export const Ruteo = () => {
@@ -15,7 +16,8 @@ export const Ruteo = () => {
       <Route path="/menadmin" element={<MenuAdmin />} />
       <Route path="/menactu/:codigo" element={<MenuActualizar />} />
       <Route path="/menuacer" element={<Acerca />} />
-
+      <Route path="/login" element={<InicioSesion />} />
+ 
      
     </Routes>
   );

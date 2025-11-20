@@ -65,31 +65,6 @@ export const Cabecera = () => {
                   <button className="dropdown-item">Alto Prado</button>
                 </li>
 
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-
-                <li className="px-3 text-muted small fw-bold">Soledad</li>
-                <li>
-                  <button className="dropdown-item">Centro</button>
-                </li>
-                <li>
-                  <button className="dropdown-item">Las Moras</button>
-                </li>
-
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
-
-                <li className="px-3 text-muted small fw-bold">
-                  Puerto Colombia
-                </li>
-                <li>
-                  <button className="dropdown-item">Pradomar</button>
-                </li>
-                <li>
-                  <button className="dropdown-item">Salgar</button>
-                </li>
               </ul>
             </li>
 
@@ -153,10 +128,13 @@ export const Cabecera = () => {
 
             {/* Iniciar sesión */}
             <li className="nav-item">
-              <button className="btn rounded-pill px-3 squirroo-orange d-flex align-items-center gap-2">
+              <NavLink
+                to="/login"
+                className="btn rounded-pill px-3 squirroo-orange d-flex align-items-center gap-2"
+              >
                 <i className="bi bi-person-circle"></i>
                 Iniciar sesión
-              </button>
+              </NavLink>
             </li>
 
             {/* ICONO CARRITO */}

@@ -103,8 +103,8 @@ export const Acerca = () => {
           {/* Imagen (puedes cambiarla cuando quieras) */}
           <div className="col-md-6 mb-4">
             <img
-              src="https://images.unsplash.com/photo-1552566626-52f8b828add9"
-              alt="Restaurante"
+              src="https://okdiario.com/img/2019/08/12/ardilla.jpg"
+              alt="Squirro"
               className="img-fluid rounded shadow"
             />
           </div>
