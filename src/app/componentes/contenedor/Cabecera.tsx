@@ -36,7 +36,7 @@ export const Cabecera = () => {
         {/* CONTENIDO */}
         <div className="collapse navbar-collapse" id="navbarProduct">
           <ul className="navbar-nav ms-auto align-items-center gap-3">
-            {/* Ubicación (Dropdown) */}
+            {/* Ubicación */}
             <li className="nav-item dropdown">
               <button
                 className="btn squirroo-btn-outline rounded-pill px-3 dropdown-toggle nav-hover"
@@ -52,11 +52,9 @@ export const Cabecera = () => {
                 aria-labelledby="dropdownUbicacion"
                 style={{ width: "260px" }}
               >
-                {/* Ciudad Barranquilla */}
                 <li className="px-3 text-muted small fw-bold mt-1">
                   Barranquilla
                 </li>
-
                 <li>
                   <button className="dropdown-item">El Prado</button>
                 </li>
@@ -71,9 +69,7 @@ export const Cabecera = () => {
                   <hr className="dropdown-divider" />
                 </li>
 
-                {/* Ciudad Soledad */}
                 <li className="px-3 text-muted small fw-bold">Soledad</li>
-
                 <li>
                   <button className="dropdown-item">Centro</button>
                 </li>
@@ -85,11 +81,9 @@ export const Cabecera = () => {
                   <hr className="dropdown-divider" />
                 </li>
 
-                {/* Ciudad Puerto Colombia */}
                 <li className="px-3 text-muted small fw-bold">
                   Puerto Colombia
                 </li>
-
                 <li>
                   <button className="dropdown-item">Pradomar</button>
                 </li>
@@ -99,7 +93,7 @@ export const Cabecera = () => {
               </ul>
             </li>
 
-            {/* MENÚ — botón + dropdown */}
+            {/* MENÚ */}
             <li className="nav-item dropdown">
               <button
                 className="btn squirroo-btn-outline rounded-pill px-3 dropdown-toggle nav-hover"
@@ -144,7 +138,6 @@ export const Cabecera = () => {
                   <hr className="dropdown-divider" />
                 </li>
 
-                {/* ACERCA DE → dentro del menú */}
                 <li>
                   <NavLink
                     to="/menuacer"
@@ -160,8 +153,16 @@ export const Cabecera = () => {
 
             {/* Iniciar sesión */}
             <li className="nav-item">
-              <button className="btn rounded-pill px-3 squirroo-orange">
+              <button className="btn rounded-pill px-3 squirroo-orange d-flex align-items-center gap-2">
+                <i className="bi bi-person-circle"></i>
                 Iniciar sesión
+              </button>
+            </li>
+
+            {/* ICONO CARRITO */}
+            <li className="nav-item">
+              <button className="btn rounded-pill px-3 squirroo-btn-outline d-flex align-items-center gap-2">
+                <i className="bi bi-cart2" style={{ fontSize: "18px" }}></i>
               </button>
             </li>
           </ul>
@@ -175,38 +176,17 @@ export const Cabecera = () => {
           --squirroo-red-dark: #5d0000ff;
         }
 
-        /* BOTÓN OUTLINE */
         .squirroo-btn-outline {
           border: 2px solid var(--squirroo-red);
           color: var(--squirroo-red) !important;
           background-color: transparent;
           transition: 0.25s;
         }
-
-        /* HOVER COMPLETO (relleno + texto + icono) */
         .squirroo-btn-outline:hover {
           background-color: var(--squirroo-red) !important;
           color: white !important;
         }
-        .squirroo-btn-outline:hover i {
-          color: white !important;
-        }
 
-        /* STATE ACTIVO (botón seleccionado usando NavLink) */
-        .active-squirroo {
-          background-color: var(--squirroo-red) !important;
-          color: white !important;
-        }
-
-        /* BOTÓN MENÚ ACTIVO CUANDO EL DROPDOWN ESTÁ ABIERTO */
-        .dropdown.show > .dropdown-toggle {
-          background-color: var(--squirroo-red) !important;
-          color: white !important;
-          border-color: var(--squirroo-red) !important;
-          box-shadow: inset 0 0 6px rgba(0,0,0,0.25);
-        }
-
-        /* LOGIN COLOR NARANJA */
         .squirroo-orange {
           background-color: #ff7b00 !important;
           color: white !important;
@@ -216,25 +196,14 @@ export const Cabecera = () => {
           background-color: #e56e00 !important;
         }
 
-        /* DROPDOWN MEJORADO */
         .squirroo-dropdown {
           padding: 10px 0;
           border-radius: 12px;
           border: 1px solid #d8b48a;
         }
-
-        .dropdown-item {
-          padding: 10px 20px;
-          border-radius: 8px;
-          transition: 0.20s;
-        }
-
         .dropdown-item:hover {
           background-color: #ffe1c2 !important;
-          color: var(--squirroo-red) !important;
         }
-
-        /* Item Activo */
         .active-squirroo-item {
           background-color: var(--squirroo-red) !important;
           color: white !important;

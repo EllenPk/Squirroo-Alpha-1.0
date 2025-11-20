@@ -18,12 +18,42 @@ export const Inicio = () => {
   const [busqueda, setBusqueda] = useState("");
 
   const productos = [
-    { nombre: "Arroz", descripcion: "Arroz Diana x 500 gr", supermercados: ["D1", "Éxito", "Ara","Olímpica"], img: arrozDiana },
-    { nombre: "Leche", descripcion: "Leche entera 900 mL", supermercados: ["Olímpica", "Éxito", "Carulla"], img: lecheAlpina },
-    { nombre: "Aceite", descripcion: "Aceite de soya 1 L", supermercados: ["D1", "Olímpica", "Ara"], img: aceiteNatura },
-    { nombre: "Huevos", descripcion: " Carton Bandeja de 30 huevos", supermercados: ["Olímpica", "Carulla"], img: huevos },
-    { nombre: "Azúcar", descripcion: "Azúcar 1 kg", supermercados: ["Éxito", "Isimo","Olímpica"], img: azucar },
-    { nombre: "Pan", descripcion: "Pan Tajado 550 gr", supermercados: ["D1", "Ara", "Carulla","Olímpica"], img: pan },
+    {
+      nombre: "Arroz",
+      descripcion: "Arroz Diana x 500 gr",
+      supermercados: ["D1", "Éxito", "Ara", "Olímpica"],
+      img: arrozDiana,
+    },
+    {
+      nombre: "Leche",
+      descripcion: "Leche entera 900 mL",
+      supermercados: ["Olímpica", "Éxito", "Carulla"],
+      img: lecheAlpina,
+    },
+    {
+      nombre: "Aceite",
+      descripcion: "Aceite de soya 1 L",
+      supermercados: ["D1", "Olímpica", "Ara"],
+      img: aceiteNatura,
+    },
+    {
+      nombre: "Huevos",
+      descripcion: " Carton Bandeja de 30 huevos",
+      supermercados: ["Olímpica", "Carulla"],
+      img: huevos,
+    },
+    {
+      nombre: "Azúcar",
+      descripcion: "Azúcar 1 kg",
+      supermercados: ["Éxito", "Isimo", "Olímpica"],
+      img: azucar,
+    },
+    {
+      nombre: "Pan",
+      descripcion: "Pan Tajado 550 gr",
+      supermercados: ["D1", "Ara", "Carulla", "Olímpica"],
+      img: pan,
+    },
   ];
 
   const supermercados = [
@@ -47,11 +77,43 @@ export const Inicio = () => {
   return (
     <main className="album py-5" style={{ backgroundColor: "#fffaf0" }}>
       <div className="container">
+        {/* Introducción */}
+        <div className="row mb-5">
+          <div className="col-md-10 mx-auto text-center">
+            <h2
+              style={{
+                background: "linear-gradient(90deg, #ff7b00, #ff4500)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                fontSize: "46px",
+                fontWeight: "900",
+                textShadow: "2px 2px 8px rgba(0,0,0,0.15)",
+              }}
+            >
+              ¿Gastando de más sin darte cuenta?
+            </h2>
+
+            <p
+              className="mt-3"
+              style={{
+                fontSize: "20px",
+                fontWeight: "600",
+                color: "#5d0000ff",
+                opacity: 0.9,
+              }}
+            >
+              Con Squirroo encuentras el mejor precio sin complicarte de más.
+            </p>
+          </div>
+        </div>
 
         {/* Buscador */}
         <div className="row mb-5">
           <div className="col-md-8 mx-auto">
-            <div className="p-4 rounded shadow-sm" style={{ backgroundColor: "#face95ff", color: "#5d0000ff" }}>
+            <div
+              className="p-4 rounded shadow-sm"
+              style={{ backgroundColor: "#face95ff", color: "#5d0000ff" }}
+            >
               <h2 className="mb-3">Busca un producto</h2>
               <div className="input-group mb-3">
                 <input
@@ -85,68 +147,93 @@ export const Inicio = () => {
           </div>
         </div>
 
-        {/* Supermercados */}
+        {/* Productos filtrados */}
+        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-5">
+          {(productosFiltrados.length > 0 ? productosFiltrados : productos).map(
+            (p) => (
+              <div key={p.nombre} className="col">
+                <div className="card shadow-sm">
+                  <img
+                    src={p.img}
+                    className="card-img-top"
+                    alt={p.nombre}
+                    style={{
+                      height: "160px",
+                      objectFit: "contain",
+                      backgroundColor: "#face95ff",
+                    }}
+                  />
+                  <div className="card-body">
+                    <p className="card-text">{p.descripcion}</p>
+                    <div className="d-flex flex-wrap gap-2 mb-2">
+                      {p.supermercados.map((s) => (
+                        <img
+                          key={s}
+                          src={obtenerLogo(s)}
+                          alt={s}
+                          title={s}
+                          style={{
+                            width: "50px",
+                            height: "50px",
+                            objectFit: "contain",
+                          }}
+                        />
+                      ))}
+                    </div>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div className="btn-group">
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-outline-primary"
+                        >
+                          Ver
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-sm btn-outline-secondary"
+                        >
+                          Añadir al carrito
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )
+          )}
+        </div>
+
+        {/* Supermercados al final */}
         <div className="row mb-5">
           <div className="col text-center">
-            <h3 className="mb-4" style={{ color: "#5d0000ff" }}>Supermercados disponibles</h3>
+            <h3 className="mb-4" style={{ color: "#5d0000ff" }}>
+              Supermercados disponibles
+            </h3>
             <div className="d-flex justify-content-center flex-wrap gap-3">
               {supermercados.map((s) => (
                 <div
                   key={s.nombre}
                   className="card p-3 shadow-sm d-flex align-items-center justify-content-center"
-                  style={{ minWidth: "120px", minHeight: "120px", backgroundColor: "#ffffff" }}
+                  style={{
+                    minWidth: "120px",
+                    minHeight: "120px",
+                    backgroundColor: "#ffffff",
+                  }}
                 >
-                  <img 
-                    src={s.logo} 
-                    alt={s.nombre} 
-                    style={{ width: "80px", height: "80px", objectFit: "contain" }} 
+                  <img
+                    src={s.logo}
+                    alt={s.nombre}
+                    style={{
+                      width: "80px",
+                      height: "80px",
+                      objectFit: "contain",
+                    }}
                   />
                 </div>
               ))}
             </div>
           </div>
         </div>
-
-        {/* Productos filtrados */}
-        <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
-          {(productosFiltrados.length > 0 ? productosFiltrados : productos).map((p) => (
-            <div key={p.nombre} className="col">
-              <div className="card shadow-sm">
-                <img 
-                  src={p.img} 
-                  className="card-img-top" 
-                  alt={p.nombre} 
-                  style={{ height: "160px", objectFit: "contain", backgroundColor: "#face95ff" }} 
-                />
-                <div className="card-body">
-                  <p className="card-text">{p.descripcion}</p>
-                  <div className="d-flex flex-wrap gap-2 mb-2">
-                    {p.supermercados.map((s) => (
-                      <img
-                        key={s}
-                        src={obtenerLogo(s)}
-                        alt={s}
-                        title={s}
-                        style={{ width: "50px", height: "50px", objectFit: "contain" }}
-                      />
-                    ))}
-                  </div>
-                  <div className="d-flex justify-content-between align-items-center">
-                    <div className="btn-group">
-                      <button type="button" className="btn btn-sm btn-outline-primary">
-                        Ver
-                      </button>
-                      <button type="button" className="btn btn-sm btn-outline-secondary">
-                        Guardar
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
-
       </div>
     </main>
   );
