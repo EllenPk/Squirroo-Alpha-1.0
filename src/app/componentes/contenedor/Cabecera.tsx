@@ -1,7 +1,19 @@
-import { NavLink } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
 import miLogo from "../../../assets/img/LogoSquirroo.png";
 
-export const Cabecera = () => {
+export const Cabecera: React.FC = () => {
+  const navigate = useNavigate();
+
+  // Ubicación seleccionada
+  const [ubicacion, setUbicacion] = useState<string>("Barranquilla – El Prado");
+
+  // TIPADO correcto de parámetros (nombre y ruta)
+  const cambiarUbicacion = (nombre: string, ruta: string) => {
+    setUbicacion(`Barranquilla – ${nombre}`);
+    navigate(ruta);
+  };
+
   return (
     <nav
       className="navbar navbar-expand-lg py-3"
@@ -11,6 +23,7 @@ export const Cabecera = () => {
       }}
     >
       <div className="container">
+
         {/* LOGO */}
         <NavLink className="navbar-brand d-flex align-items-center" to="/">
           <img
@@ -36,6 +49,7 @@ export const Cabecera = () => {
         {/* CONTENIDO */}
         <div className="collapse navbar-collapse" id="navbarProduct">
           <ul className="navbar-nav ms-auto align-items-center gap-3">
+
             {/* Ubicación */}
             <li className="nav-item dropdown">
               <button
@@ -44,7 +58,7 @@ export const Cabecera = () => {
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                <i className="bi bi-geo-alt me-1"></i> Barranquilla – El Prado
+                <i className="bi bi-geo-alt me-1"></i> {ubicacion}
               </button>
 
               <ul
@@ -55,16 +69,37 @@ export const Cabecera = () => {
                 <li className="px-3 text-muted small fw-bold mt-1">
                   Barranquilla
                 </li>
+
                 <li>
-                  <button className="dropdown-item">El Prado</button>
-                </li>
-                <li>
-                  <button className="dropdown-item">Villa Country</button>
-                </li>
-                <li>
-                  <button className="dropdown-item">Alto Prado</button>
+                  <button
+                    className="dropdown-item"
+                    onClick={() => cambiarUbicacion("El Prado", "/ubicacion/elprado")}
+                  >
+                    El Prado
+                  </button>
                 </li>
 
+                <li>
+                  <button
+                    className="dropdown-item"
+                    onClick={() =>
+                      cambiarUbicacion("Las delicias", "/ubicacion/lasdelicias")
+                    }
+                  >
+                    Las Delicias
+                  </button>
+                </li>
+
+                <li>
+                  <button
+                    className="dropdown-item"
+                    onClick={() =>
+                      cambiarUbicacion("Los Alpes", "/ubicacion/losalpes")
+                    }
+                  >
+                    Los Alpes
+                  </button>
+                </li>
               </ul>
             </li>
 
@@ -85,33 +120,29 @@ export const Cabecera = () => {
               >
                 <li>
                   <NavLink
-                    to="/mencre"
+                    to="/mencomp"
                     className={({ isActive }) =>
                       `dropdown-item ${isActive ? "active-squirroo-item" : ""}`
                     }
                   >
-                    Registrar Menús
+                    Comparador de precios
                   </NavLink>
                 </li>
 
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
+                <li><hr className="dropdown-divider" /></li>
 
                 <li>
                   <NavLink
-                    to="/menadmin"
+                    to="/menuso"
                     className={({ isActive }) =>
                       `dropdown-item ${isActive ? "active-squirroo-item" : ""}`
                     }
                   >
-                    Administrar Menús
+                    Ayuda
                   </NavLink>
                 </li>
 
-                <li>
-                  <hr className="dropdown-divider" />
-                </li>
+                <li><hr className="dropdown-divider" /></li>
 
                 <li>
                   <NavLink
