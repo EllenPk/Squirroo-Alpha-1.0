@@ -7,6 +7,7 @@ import { Inicio } from "../../componentes/contenedor/Inicio";
 import { MenuActualizar } from "../../componentes/Menu/MenuActualizar";
 import { InicioSesion } from "../../componentes/Otros/InicioSesion";
 import { UbicacionBarrio } from "../../componentes/Otros/UbicacionBarrio";
+import CarritoPage from "../../componentes/Otros/CarritoPage";
 
 
 export const Ruteo = () => {
@@ -19,6 +20,7 @@ export const Ruteo = () => {
       <Route path="/menuacer" element={<Acerca />} />
       <Route path="/login" element={<InicioSesion />} />
       <Route path="/ubicacion/:barrio" element={<UbicacionBarrio />} />
+      <Route path="/carrito" element={<CarritoPage />} />
      
     </Routes>
   );

@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { NavLink, useNavigate } from "react-router-dom";
 import miLogo from "../../../assets/img/LogoSquirroo.png";
+import { useCarrito } from "../../contexto/CarritoContext";
 
 export const Cabecera: React.FC = () => {
   const navigate = useNavigate();
+  const { carrito } = useCarrito();
 
   // Ubicación seleccionada
   const [ubicacion, setUbicacion] = useState<string>("Barranquilla – El Prado");
@@ -23,7 +25,6 @@ export const Cabecera: React.FC = () => {
       }}
     >
       <div className="container">
-
         {/* LOGO */}
         <NavLink className="navbar-brand d-flex align-items-center" to="/">
           <img
@@ -49,7 +50,6 @@ export const Cabecera: React.FC = () => {
         {/* CONTENIDO */}
         <div className="collapse navbar-collapse" id="navbarProduct">
           <ul className="navbar-nav ms-auto align-items-center gap-3">
-
             {/* Ubicación */}
             <li className="nav-item dropdown">
               <button
@@ -73,7 +73,9 @@ export const Cabecera: React.FC = () => {
                 <li>
                   <button
                     className="dropdown-item"
-                    onClick={() => cambiarUbicacion("El Prado", "/ubicacion/elprado")}
+                    onClick={() =>
+                      cambiarUbicacion("El Prado", "/ubicacion/elprado")
+                    }
                   >
                     El Prado
                   </button>
@@ -129,7 +131,9 @@ export const Cabecera: React.FC = () => {
                   </NavLink>
                 </li>
 
-                <li><hr className="dropdown-divider" /></li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
 
                 <li>
                   <NavLink
@@ -142,7 +146,9 @@ export const Cabecera: React.FC = () => {
                   </NavLink>
                 </li>
 
-                <li><hr className="dropdown-divider" /></li>
+                <li>
+                  <hr className="dropdown-divider" />
+                </li>
 
                 <li>
                   <NavLink
@@ -169,10 +175,33 @@ export const Cabecera: React.FC = () => {
             </li>
 
             {/* ICONO CARRITO */}
-            <li className="nav-item">
-              <button className="btn rounded-pill px-3 squirroo-btn-outline d-flex align-items-center gap-2">
+            <li className="nav-item" style={{ position: "relative" }}>
+              <NavLink
+                to="/carrito"
+                className="btn rounded-pill px-3 squirroo-btn-outline d-flex align-items-center gap-2"
+                style={{ position: "relative" }}
+              >
                 <i className="bi bi-cart2" style={{ fontSize: "18px" }}></i>
-              </button>
+
+                {/* BURBUJA DEL CONTADOR */}
+                {carrito.length > 0 && (
+                  <span
+                    style={{
+                      position: "absolute",
+                      top: "-5px",
+                      right: "-5px",
+                      background: "red",
+                      color: "white",
+                      fontSize: "12px",
+                      padding: "2px 6px",
+                      borderRadius: "50%",
+                      fontWeight: "bold",
+                    }}
+                  >
+                    {carrito.length}
+                  </span>
+                )}
+              </NavLink>
             </li>
           </ul>
         </div>

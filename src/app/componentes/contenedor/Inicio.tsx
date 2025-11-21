@@ -1,3 +1,4 @@
+import { useCarrito } from "../../contexto/CarritoContext";
 import { useState } from "react";
 import logoD1 from "../../../assets/img/d1.png";
 import logoOlimpica from "../../../assets/img/olimpica.png";
@@ -16,40 +17,47 @@ import pan from "../../../assets/img/Pan tajado.png";
 
 export const Inicio = () => {
   const [busqueda, setBusqueda] = useState("");
+  const { agregarProducto } = useCarrito();
 
   const productos = [
     {
       nombre: "Arroz",
+      precio: 5000,
       descripcion: "Arroz Diana x 500 gr",
       supermercados: ["D1", "Éxito", "Ara", "Olímpica"],
       img: arrozDiana,
     },
     {
       nombre: "Leche",
+      precio: 3500,
       descripcion: "Leche entera 900 mL",
       supermercados: ["Olímpica", "Éxito", "Carulla"],
       img: lecheAlpina,
     },
     {
       nombre: "Aceite",
+      precio: 8000,
       descripcion: "Aceite de soya 1 L",
       supermercados: ["D1", "Olímpica", "Ara"],
       img: aceiteNatura,
     },
     {
       nombre: "Huevos",
+      precio: 28000,
       descripcion: " Carton Bandeja de 30 huevos",
       supermercados: ["Olímpica", "Carulla"],
       img: huevos,
     },
     {
       nombre: "Azúcar",
+      precio: 4000,
       descripcion: "Azúcar 1 kg",
       supermercados: ["Éxito", "Isimo", "Olímpica"],
       img: azucar,
     },
     {
       nombre: "Pan",
+      precio: 3000,
       descripcion: "Pan Tajado 550 gr",
       supermercados: ["D1", "Ara", "Carulla", "Olímpica"],
       img: pan,
@@ -146,6 +154,15 @@ export const Inicio = () => {
             </div>
           </div>
         </div>
+             <div className="col-md-10 mx-auto text-center">
+    <h3 style={{ color: "#ff4500", fontWeight: "700" }}>
+      Productos de remate 🔥
+    </h3>
+    <p style={{ color: "#5d0000ff", opacity: 0.8 }}>
+      Aprovecha estos descuentos antes de que se agoten.
+    </p>
+  </div>
+
 
         {/* Productos filtrados */}
         <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 mb-5">
@@ -165,6 +182,13 @@ export const Inicio = () => {
                   />
                   <div className="card-body">
                     <p className="card-text">{p.descripcion}</p>
+                    <p
+                      className="fw-bold"
+                      style={{ color: "#5d0000ff", fontSize: "18px" }}
+                    >
+                      Precio: ${p.precio.toLocaleString()}
+                    </p>
+
                     <div className="d-flex flex-wrap gap-2 mb-2">
                       {p.supermercados.map((s) => (
                         <img
@@ -191,6 +215,14 @@ export const Inicio = () => {
                         <button
                           type="button"
                           className="btn btn-sm btn-outline-secondary"
+                          onClick={() =>
+                            agregarProducto({
+                              id: p.nombre.length, // temporal
+                              nombre: p.nombre,
+                              precio: p.precio,
+                              img: p.img,
+                            })
+                          }
                         >
                           Añadir al carrito
                         </button>
@@ -203,7 +235,7 @@ export const Inicio = () => {
           )}
         </div>
 
-        {/* Supermercados al final */}
+        {/* Supermercados */}
         <div className="row mb-5">
           <div className="col text-center">
             <h3 className="mb-4" style={{ color: "#5d0000ff" }}>
